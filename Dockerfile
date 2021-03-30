@@ -1,5 +1,5 @@
 FROM php:7.0-fpm
-MAINTAINER Kristoph Junge <kristoph.junge@gmail.com>
+#MAINTAINER Kristoph Junge <kristoph.junge@gmail.com>
 
 # Change UID and GID of www-data user to match host privileges
 RUN usermod -u 999 www-data && \
@@ -29,7 +29,9 @@ RUN apt-get update && apt-get install -y imagemagick libmagickwand-6.q16-dev --n
 # Intl PHP extension
 RUN apt-get update && apt-get install -y libicu-dev g++ --no-install-recommends && \
     docker-php-ext-install intl && \
-    apt-get install -y --auto-remove libicu52 g++ && \
+    apt-get install -y --auto-remove 
+    #libicu52 
+    g++ && \
     rm -rf /var/lib/apt/lists/*
 
 # APC PHP extension
