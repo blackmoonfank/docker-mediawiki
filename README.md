@@ -1,6 +1,10 @@
 # Docker MediaWiki
 
-[![DockerHub Pulls](https://img.shields.io/docker/pulls/kristophjunge/mediawiki.svg)](https://hub.docker.com/r/kristophjunge/mediawiki/) [![DockerHub Stars](https://img.shields.io/docker/stars/kristophjunge/mediawiki.svg)](https://hub.docker.com/r/kristophjunge/mediawiki/) [![GitHub Stars](https://img.shields.io/github/stars/kristophjunge/docker-mediawiki.svg?label=github%20stars)](https://github.com/kristophjunge/docker-mediawiki) [![GitHub Forks](https://img.shields.io/github/forks/kristophjunge/docker-mediawiki.svg?label=github%20forks)](https://github.com/kristophjunge/docker-mediawiki) [![GitHub License](https://img.shields.io/github/license/kristophjunge/docker-mediawiki.svg)](https://github.com/kristophjunge/docker-mediawiki)
+![Docker Pulls](https://img.shields.io/docker/pulls/furqon/mediawiki)
+![Docker Stars](https://img.shields.io/docker/stars/furqon/mediawiki)
+![GitHub Repo stars](https://img.shields.io/github/stars/blackmoonfank/docker-mediawiki?label=github%20star)
+![GitHub forks](https://img.shields.io/github/forks/blackmoonfank/docker-mediawiki?label=github%20forks&style=plastic)
+![GitHub](https://img.shields.io/github/license/blackmoonfank/docker-mediawiki)
 
 [![MediaWiki](https://raw.githubusercontent.com/kristophjunge/docker-mediawiki/master/mediawiki.png)](https://www.mediawiki.org)
 
