@@ -7,7 +7,7 @@ RUN usermod -u 999 www-data && \
 
 # Utilities
 RUN apt-get update && \
-    apt-get -y install apt-transport-https apt-utils ca-certificates git curl --no-install-recommends && \
+    apt-get -y install apt-transport-https ca-certificates git curl --no-install-recommends && \
     rm -r /var/lib/apt/lists/*
 
 # MySQL PHP extension
@@ -48,8 +48,8 @@ COPY config/nginx/* /etc/nginx/
 # PHP-FPM
 COPY config/php-fpm/php-fpm.conf /usr/local/etc/
 COPY config/php-fpm/php.ini /usr/local/etc/php/
-RUN mkdir -p /var/run/php7.4-fpm/ && \
-    chown www-data:www-data /var/run/php7.4-fpm/
+RUN mkdir -p /var/run/php7-fpm/ && \
+    chown www-data:www-data /var/run/php7-fpm/
 
 # Supervisor
 RUN apt-get update && \
@@ -59,15 +59,15 @@ COPY config/supervisor/supervisord.conf /etc/supervisor/conf.d/
 COPY config/supervisor/kill_supervisor.py /usr/bin/
 
 # NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
     apt-get install -y nodejs --no-install-recommends
 
 # Parsoid
 RUN useradd parsoid --no-create-home --home-dir /usr/lib/parsoid --shell /usr/sbin/nologin
-RUN apt-key advanced --keyserver keys.gnupg.net --recv-keys AF380A3036A03444 && \
+RUN apt-key advanced --keyserver pgp.mit.edu --recv-keys 90E9F83F22250DD7 && \
     echo "deb https://releases.wikimedia.org/debian jessie-mediawiki main" > /etc/apt/sources.list.d/parsoid.list && \
     apt-get update && \
-    apt-get -y install parsoid --no-install-recommends  --allow-unauthenticated
+    apt-get -y install parsoid --no-install-recommends
 COPY config/parsoid/config.yaml /usr/lib/parsoid/src/config.yaml
 ENV NODE_PATH /usr/lib/parsoid/node_modules:/usr/lib/parsoid/src
 
