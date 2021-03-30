@@ -29,8 +29,7 @@ RUN apt-get update && apt-get install -y imagemagick libmagickwand-6.q16-dev --n
 # Intl PHP extension
 RUN apt-get update && apt-get install -y libicu-dev g++ --no-install-recommends && \
     docker-php-ext-install intl && \
-    apt-get install -y --auto-remove 
-    #libicu52 
+    apt-get install -y --auto-remove \
     g++ && \
     rm -rf /var/lib/apt/lists/*
 
