@@ -1,5 +1,5 @@
 FROM php:7.4-fpm
-#MAINTAINER Kristoph Junge <kristoph.junge@gmail.com>
+LABEL MAINTAINER Nurul Furqon R <furqon.pstt@gmail.com>
 
 # Change UID and GID of www-data user to match host privileges
 RUN usermod -u 999 www-data && \
@@ -19,10 +19,19 @@ RUN curl -s -o /tmp/go-pear.phar http://pear.php.net/go-pear.phar && \
     chmod +x /usr/bin/pear && \
     pear install mail Net_SMTP
 
+# MySQL PHP extension
+RUN docker-php-ext-install mysqli
+
+# Pear mail
+RUN curl -s -o /tmp/go-pear.phar http://pear.php.net/go-pear.phar && \
+    echo '/usr/bin/php /tmp/go-pear.phar "$@"' > /usr/bin/pear && \
+    chmod +x /usr/bin/pear && \
+    pear install mail Net_SMTP
+
 # Imagick with PHP extension
-RUN apt-get update && apt-get install -y imagemagick libmagickwand-6.q16-dev --no-install-recommends && \
+RUN apt-get update && apt-get install -y imagemagick libmagickwand-6.q16-dev --no-install-recommends  && \
     ln -s /usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/MagickWand-config /usr/bin/ && \
-    pecl install imagick-3.4.0RC6 && \
+    pecl install imagick-3.4.4 && \
     echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini && \
     rm -rf /var/lib/apt/lists/*
 
