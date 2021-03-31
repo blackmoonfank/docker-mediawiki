@@ -1,3 +1,11 @@
+## 2021-03-31 v1.35.1
+
+* Updated to MediaWiki 1.35.1
+* Updated to php7.4-fpm base image
+* Updated to imagick-3.4.4
+* Fixed contribution links in README.md. 
+
+
 ## 2018-02-04 v1.30.0-2
 
 * Switched to release tag names prepended with "v".
